@@ -2,7 +2,9 @@ package commerce.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import kong.unirest.GenericType;
 import kong.unirest.ObjectMapper;
 
 public class JsonMapper implements ObjectMapper {
@@ -28,6 +30,15 @@ public class JsonMapper implements ObjectMapper {
     public String writeValue(Object value) {
         try {
             return mapper.writeValueAsString(value);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Json mapping error: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public <T> T readValue(String value, GenericType<T> genericType) {
+        try {
+            return mapper.readValue(value,  mapper.constructType(genericType.getType()));
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Json mapping error: " + e.getMessage());
         }
