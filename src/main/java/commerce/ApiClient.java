@@ -52,9 +52,19 @@ public class ApiClient {
         return response.getBody();
     }
 
+    private <T> T makeRequest(HttpRequest<?> request, GenericType<T> genericType) {
+        HttpResponse<T> response = request.asObjectAsync(genericType).join();
+        return response.getBody();
+    }
+
     public <T> T get(String path, Map<String, Object> queryParams, Map<String, String> headers, Class<T> entityClass) {
         return makeRequest(unirest.get(String.join("/", BASE_URL, path))
                 .queryString(queryParams).headers(headers), entityClass);
+    }
+
+    public <T> T get(String path, Map<String, Object> queryParams, Map<String, String> headers, GenericType<T> genericType) {
+        return makeRequest(unirest.get(String.join("/", BASE_URL, path))
+                .queryString(queryParams).headers(headers), genericType);
     }
 
     public <T> T post(String path, Object body, Map<String, String> headers, Class<T> entityClass) {
