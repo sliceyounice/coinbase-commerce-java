@@ -24,10 +24,13 @@ public class Charge {
     @JsonProperty("hosted_url")
     private String hostedUrl;
 
+    @JsonProperty("created_at")
     private Date createdAt;
 
+    @JsonProperty("expires_at")
     private Date expiresAt;
 
+    @JsonProperty("confirmed_at")
     private Date confirmedAt;
 
     private Object checkout;
