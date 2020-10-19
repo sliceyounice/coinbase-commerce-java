@@ -1,8 +1,11 @@
 package commerce.api.operations;
 
-import java.util.List;
+import commerce.model.list.ListResponse;
+import commerce.model.list.pagination.Pagination;
 
 public interface ListOperation<T> {
 
-    List<T> list();
+    ListResponse<T> list(int limit);
+
+    ListResponse<T> getNext(Pagination pagination);
 }
