@@ -133,7 +133,7 @@ public class Charge {
         return addresses;
     }
 
-    private static class Timeline {
+    public static class Timeline {
         public Date time;
         public String status;
         public String context;
@@ -151,7 +151,7 @@ public class Charge {
         }
     }
 
-    private static class Pricing {
+    public static class Pricing {
         private PricingEntry local;
         private PricingEntry bitcoin;
         private PricingEntry ethereum;
@@ -169,7 +169,7 @@ public class Charge {
         }
     }
 
-    private static class PaymentThreshold {
+    public static class PaymentThreshold {
         private PricingEntry overpayment_absolute_threshold;
         private String overpayment_relative_threshold;
         private PricingEntry underpayment_absolute_threshold;
@@ -192,7 +192,7 @@ public class Charge {
         }
     }
 
-    private static class Value {
+    public static class Value {
         private PricingEntry local;
         private PricingEntry crypto;
 
@@ -205,7 +205,7 @@ public class Charge {
         }
     }
 
-    private static class Block {
+    public static class Block {
         private int height;
         private String hash;
         private int confirmations_accumulated;
@@ -228,7 +228,7 @@ public class Charge {
         }
     }
 
-    private static class Payment {
+    public static class Payment {
         private String network;
         private String transaction_id;
         private String status;
@@ -262,7 +262,7 @@ public class Charge {
         }
     }
 
-    private static class Addresses {
+    public static class Addresses {
         private String bitcoin;
         private String ethereum;
 
