@@ -5,17 +5,14 @@ import commerce.exception.SignatureVerificationException;
 import commerce.model.event.Event;
 import commerce.model.event.WebhookEventPayload;
 import commerce.util.JsonMapper;
-import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.binary.StringUtils;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 public class Webhook {
 

@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import commerce.model.list.pagination.Pagination;
 import commerce.util.deserializers.CustomListDeserializer;
 
-import java.util.*;
+import java.util.AbstractList;
+import java.util.Iterator;
+import java.util.List;
 
 @JsonDeserialize(using = CustomListDeserializer.class)
 public class ListResponse<T> extends AbstractList<T> {

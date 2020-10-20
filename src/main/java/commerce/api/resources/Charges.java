@@ -4,9 +4,9 @@ import commerce.ApiClient;
 import commerce.api.operations.CreateOperation;
 import commerce.api.operations.ListOperation;
 import commerce.api.operations.RetrieveOperation;
-import commerce.model.list.ListResponse;
 import commerce.model.charge.Charge;
 import commerce.model.charge.ChargeRequest;
+import commerce.model.list.ListResponse;
 import commerce.model.list.pagination.Pagination;
 import kong.unirest.GenericType;
 
