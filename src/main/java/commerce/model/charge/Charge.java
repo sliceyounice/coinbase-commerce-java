@@ -24,6 +24,9 @@ public class Charge {
     @JsonProperty("hosted_url")
     private String hostedUrl;
 
+    @JsonProperty("support_email")
+    String supportEmail;
+
     @JsonProperty("created_at")
     private Date createdAt;
 
@@ -229,6 +232,8 @@ public class Charge {
         private String network;
         private String transaction_id;
         private String status;
+        @JsonProperty("detected_at")
+        private Date detectedAt;
         private Value value;
         private Block block;
 
@@ -250,6 +255,10 @@ public class Charge {
 
         public Block getBlock() {
             return block;
+        }
+
+        public Date getDetectedAt() {
+            return detectedAt;
         }
     }
 
