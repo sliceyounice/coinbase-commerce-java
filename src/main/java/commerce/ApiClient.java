@@ -1,6 +1,7 @@
 package commerce;
 
 import commerce.api.resources.Charges;
+import commerce.api.resources.Events;
 import commerce.util.JsonMapper;
 import kong.unirest.*;
 
@@ -17,6 +18,8 @@ public class ApiClient {
     private final UnirestInstance unirest;
 
     private Charges charges;
+
+    private Events events;
 
     public ApiClient(String apiKey) {
         this(apiKey, "2018-03-22");
@@ -37,6 +40,13 @@ public class ApiClient {
             this.charges = new Charges(this);
         }
         return this.charges;
+    }
+
+    public Events events() {
+        if (this.events == null) {
+            this.events = new Events(this);
+        }
+        return this.events;
     }
 
     public String getApiKey() {
