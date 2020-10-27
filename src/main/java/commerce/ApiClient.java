@@ -2,6 +2,8 @@ package commerce;
 
 import commerce.api.resources.Charges;
 import commerce.api.resources.Events;
+import commerce.model.CoinbaseError;
+import commerce.util.ExceptionFabric;
 import commerce.util.JsonMapper;
 import kong.unirest.*;
 
@@ -59,11 +61,13 @@ public class ApiClient {
 
     private <T> T makeRequest(HttpRequest<?> request, Class<T> entityClass) {
         HttpResponse<T> response = request.asObjectAsync(entityClass).join();
+        response.ifFailure(CoinbaseError.class, res -> ExceptionFabric.throwCoinbaseException(res.getBody()));
         return response.getBody();
     }
 
     private <T> T makeRequest(HttpRequest<?> request, GenericType<T> genericType) {
         HttpResponse<T> response = request.asObjectAsync(genericType).join();
+        response.ifFailure(CoinbaseError.class, res -> ExceptionFabric.throwCoinbaseException(res.getBody()));
         return response.getBody();
     }
 
